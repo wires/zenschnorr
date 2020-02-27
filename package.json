@@ -1,0 +1,17 @@
+{
+  "name": "zenroom-schnorr.git",
+  "version": "1.0.0",
+  "description": "",
+  "main": "schnorr.js",
+  "devDependencies": {},
+  "scripts": {
+    "bundle-lua": "node crypto/bundle.js",
+    "test": "npm run bundle-lua && node example.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "zenwrap": "^1.0.2"
+  }
+}
