@@ -11,9 +11,11 @@ random
 keypair
 signature
 verify
+signatureAdaptor
+verifyAdaptor
 `.trim().split(/\s/)
 
-console.log(`BUNDLING SCRIPTS: ${scripts.join(', ')}`)
+console.log(`BUNDLING LUA SCRIPTS: ${scripts.join(', ')}`)
 
 const scriptDict = scripts
     .map(s => [s, load(`${s}.lua`)])
@@ -25,7 +27,7 @@ const scriptDict = scripts
 scriptDict.schnorr = readFile('schnorr.lua')
 
 const jsModuleContent = `/* GENERATED from .lua files, use 'npm run bundle-lua' to rebuild */
-module.exports = ${JSON.stringify(scriptDict)}
+module.exports = ${JSON.stringify(scriptDict, null, 2)}
 `
 const targetFilename = path.join(__dirname, 'lua-scripts.js')
 fs.writeFileSync(targetFilename, jsModuleContent, {encoding: 'utf8'})

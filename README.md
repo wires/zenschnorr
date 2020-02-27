@@ -2,12 +2,19 @@
 
 Based on `zenroom`, uses curve `BLS461` from the Millagro library.
 
-The cryptographic schemes are implemented in Lua, see `scripts/*.lua`.
+The way it works is that Zenroom uses the Milagro library for the
+elliptic curve and finite field stuff. It's all written in C and
+scriptable using Lua. This is then compiled into wasm using emscripten.
+
+The arguments for the Lua scripts are passed as JSON encoded strings.
+To get output back from the scripts, the `print(JSON.encode({}))`
+command is used.
+
+So the cryptography is implemented in Lua, see `scripts/*.lua`.
 
 There is a `build.js` script that prepends the contents of `prelude.lua` to
-each other script and produces `lua-scripts.js`.
-
-Run `npm run bundle-lua` to update this file.
+each other script and produces `lua-scripts.js`. Run `npm run bundle-lua`
+to update this file.
 
 ## API
 
