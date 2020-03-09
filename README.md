@@ -57,7 +57,7 @@ const {private, public} = await S.keypair(rnd)
 
 ```js
 const m = 'deadbeef'
-const {r, R} = await S.sign({private, public}, m, rnd)
+const {s, R} = await S.sign({private, public}, m, rnd)
 ```
 
 ### Verifying a signature
